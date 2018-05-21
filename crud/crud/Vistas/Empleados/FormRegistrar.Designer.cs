@@ -229,6 +229,7 @@
             this.cbo_departamento.Name = "cbo_departamento";
             this.cbo_departamento.Size = new System.Drawing.Size(142, 21);
             this.cbo_departamento.TabIndex = 13;
+            this.cbo_departamento.SelectedValueChanged += new System.EventHandler(this.cbo_departamento_SelectedValueChanged);
             // 
             // cbo_provincia
             // 
@@ -309,9 +310,11 @@
             this.btn_agregar.TabIndex = 18;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = true;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // dgv_telefonos
             // 
+            this.dgv_telefonos.AllowUserToAddRows = false;
             this.dgv_telefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_telefonos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -367,6 +370,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormRegistrar";
             this.Text = "FormRegistrar";
+            this.Load += new System.EventHandler(this.FormRegistrar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

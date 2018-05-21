@@ -132,6 +132,7 @@
             this.btn_agregar.TabIndex = 18;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = true;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // txt_numero
             // 
@@ -223,6 +224,8 @@
             this.cbo_departamento.Name = "cbo_departamento";
             this.cbo_departamento.Size = new System.Drawing.Size(142, 21);
             this.cbo_departamento.TabIndex = 13;
+            this.cbo_departamento.SelectedIndexChanged += new System.EventHandler(this.cbo_departamento_SelectedIndexChanged);
+            this.cbo_departamento.SelectedValueChanged += new System.EventHandler(this.cbo_departamento_SelectedValueChanged);
             // 
             // cbo_estado_civil
             // 
@@ -366,6 +369,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormActualizar";
             this.Text = "FormActualizar";
+            this.Load += new System.EventHandler(this.FormActualizar_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telefonos)).EndInit();

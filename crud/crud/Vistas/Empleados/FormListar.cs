@@ -21,5 +21,10 @@ namespace crud.Vistas.Empleados
         {
 
         }
+
+        private void FormListar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

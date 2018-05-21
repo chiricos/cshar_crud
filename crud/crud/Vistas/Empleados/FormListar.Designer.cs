@@ -138,6 +138,7 @@
             this.Controls.Add(this.ll_nuevo_empleado);
             this.Name = "FormListar";
             this.Text = "FormListar";
+            this.Load += new System.EventHandler(this.FormListar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_empleados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
