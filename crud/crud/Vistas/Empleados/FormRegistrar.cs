@@ -52,27 +52,30 @@ namespace crud.Vistas.Empleados
             cbo_genero.SelectedIndex = 0;
             cbo_estado_civil.SelectedIndex = 0;
             cbo_operador.SelectedIndex = 0;
-            /*var ubigeo = new Clases.Ubigeo();
+
+            var ubigeo = new Clases.Ubigeo();
             var tabla = ubigeo.ListarDepartamentos();
             if (tabla.Rows.Count > 0)
             {
                 cbo_departamento.DataSource = tabla;
-                cbo_departamento.DisplayMember = "NOMBRE DEPARTAMENTO";
+                cbo_departamento.DisplayMember = "NOMBRE_DEPARTAMENTO";
                 cbo_departamento.ValueMember = "DEPARTAMENTO_ID";
-            }*/
+            }
         }
 
         private void cbo_departamento_SelectedValueChanged(object sender, EventArgs e)
         {
            
-            /*var ubigeo = new Clases.Ubigeo();
-            var tabla = ubigeo.ListarDepartamentos();
+            var ubigeo = new Clases.Ubigeo();
+            var departamentoId = cbo_departamento.SelectedValue.ToString();
+            var tabla = ubigeo.ListarProvinciasPorDepartamentoId(departamentoId);
+
             if (tabla.Rows.Count > 0)
             {
-                cbo_departamento.DataSource = tabla;
-                cbo_departamento.DisplayMember = "NOMBRE DEPARTAMENTO";
-                cbo_departamento.ValueMember = "DEPARTAMENTO_ID";
-            }*/
+                cbo_provincia.DataSource = tabla;
+                cbo_provincia.DisplayMember = "NOMBRE_PROVINCIA";
+                cbo_provincia.ValueMember = "PROVINCIA_ID";
+            }
         }
 
         private void btn_agregar_Click(object sender, EventArgs e)
@@ -113,6 +116,20 @@ namespace crud.Vistas.Empleados
             string operador = cbo_operador.Text;
             string numero = txt_numero.Text;
             dgv_telefonos.Rows.Add(operador, numero, "Eliminar");
+        }
+
+        private void cbo_provincia_SelectedValueChanged(object sender, EventArgs e)
+        {
+            var ubigeo = new Clases.Ubigeo();
+            var provinciaId = cbo_provincia.SelectedValue.ToString();
+            var tabla = ubigeo.ListarDistritosPorProvinciaId(provinciaId);
+
+            if (tabla.Rows.Count > 0)
+            {
+                cbo_distrito.DataSource = tabla;
+                cbo_distrito.DisplayMember = "NOMBRE_DISTRITO";
+                cbo_distrito.ValueMember = "DISTRITO_ID";
+            }
         }
     }
 }

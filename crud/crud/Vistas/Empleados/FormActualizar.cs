@@ -22,27 +22,27 @@ namespace crud.Vistas.Empleados
             cbo_genero.SelectedIndex = 0;
             cbo_estado_civil.SelectedIndex = 0;
             cbo_operador.SelectedIndex = 0;
-/*
+
             var ubigeo = new Clases.Ubigeo();
             var tabla = ubigeo.ListarDepartamentos();
             if (tabla.Rows.Count > 0)
             {
                 cbo_departamento.DataSource = tabla;
-                cbo_departamento.DisplayMember = "NOMBRE DEPARTAMENTO";
+                cbo_departamento.DisplayMember = "NOMBRE_DEPARTAMENTO";
                 cbo_departamento.ValueMember = "DEPARTAMENTO_ID";
-            }*/
+            }
         }
 
         private void cbo_departamento_SelectedValueChanged(object sender, EventArgs e)
         {
-            /*var ubigeo = new Clases.Ubigeo();
+            var ubigeo = new Clases.Ubigeo();
             var tabla = ubigeo.ListarDepartamentos();
             if (tabla.Rows.Count > 0)
             {
                 cbo_departamento.DataSource = tabla;
-                cbo_departamento.DisplayMember = "NOMBRE DEPARTAMENTO";
+                cbo_departamento.DisplayMember = "NOMBRE_DEPARTAMENTO";
                 cbo_departamento.ValueMember = "DEPARTAMENTO_ID";
-            }*/
+            }
         }
 
         private void cbo_departamento_SelectedIndexChanged(object sender, EventArgs e)

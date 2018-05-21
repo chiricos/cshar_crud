@@ -238,6 +238,7 @@
             this.cbo_provincia.Name = "cbo_provincia";
             this.cbo_provincia.Size = new System.Drawing.Size(161, 21);
             this.cbo_provincia.TabIndex = 14;
+            this.cbo_provincia.SelectedValueChanged += new System.EventHandler(this.cbo_provincia_SelectedValueChanged);
             // 
             // cbo_distrito
             // 

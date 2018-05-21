@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,70 @@ namespace crud.Clases
            ConfigurationManager.ConnectionStrings["cs_proyecto"].ConnectionString
            );
 
-        public int ListarDepartamentos()
+        public DataTable ListarDepartamentos()
         {
-            
-            return 1;
+            //instanciando a la clase datatable
+            var tabla = new DataTable();
+            try
+            {
+                //creando una instancia de la clase sqldataadapter
+                using (var adaptador = new SqlDataAdapter("SELECT * FROM DEPARTAMENTOS",cn))
+                {
+                    adaptador.SelectCommand.CommandType = CommandType.Text;
+                    adaptador.Fill(tabla);
+                }
+            }
+            catch (SqlException e) 
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return tabla;
+            }
+            return tabla;
         }
+
+        public DataTable ListarProvinciasPorDepartamentoId(string departamentoId)
+        {
+            //instanciando a la clase datatable
+            var tabla = new DataTable();
+            try
+            {
+                //creando una instancia de la clase sqldataadapter
+                using (var adaptador = new SqlDataAdapter("SELECT * FROM PROVINCIAS WHERE DEPARTAMENTO_ID = @DEPARTAMENTO_ID ", cn))
+                {
+                    adaptador.SelectCommand.Parameters.AddWithValue("@DEPARTAMENTO_ID",departamentoId);
+                    adaptador.SelectCommand.CommandType = CommandType.Text;
+                    adaptador.Fill(tabla);
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return tabla;
+            }
+            return tabla;
+        }
+
+        public DataTable ListarDistritosPorProvinciaId(string provinciaId)
+        {
+            //instanciando a la clase datatable
+            var tabla = new DataTable();
+            try
+            {
+                //creando una instancia de la clase sqldataadapter
+                using (var adaptador = new SqlDataAdapter("SELECT * FROM DISTRITOS WHERE PROVINCIA_ID = @PROVINCIA_ID ", cn))
+                {
+                    adaptador.SelectCommand.Parameters.AddWithValue("@PROVINCIA_ID", provinciaId);
+                    adaptador.SelectCommand.CommandType = CommandType.Text;
+                    adaptador.Fill(tabla);
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return tabla;
+            }
+            return tabla;
+        }
+
     }
 }

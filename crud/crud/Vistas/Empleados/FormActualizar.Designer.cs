@@ -99,6 +99,7 @@
             // 
             // dgv_telefonos
             // 
+            this.dgv_telefonos.AllowUserToAddRows = false;
             this.dgv_telefonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_telefonos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,

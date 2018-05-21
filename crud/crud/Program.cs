@@ -16,7 +16,7 @@ namespace crud
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Vistas.Empleados.FormRegistrar());
+            Application.Run(new Vistas.Empleados.FormListar());
         }
     }
 }

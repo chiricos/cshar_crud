@@ -15,6 +15,26 @@ namespace crud.Vistas.Empleados
         public FormListar()
         {
             InitializeComponent();
+            if (_myForm == null)
+            {
+                _myForm = this;
+            }
+        }
+
+        private static FormListar _myForm;
+
+        public static FormListar MyForm
+        {
+            get 
+            {
+                if (_myForm == null)
+                {
+                    _myForm = new FormListar(); 
+                }
+                return FormListar._myForm; 
+                
+            }
+            set { FormListar._myForm = value; }
         }
 
         private void txt_nombre_TextChanged(object sender, EventArgs e)
@@ -24,7 +44,10 @@ namespace crud.Vistas.Empleados
 
         private void FormListar_Load(object sender, EventArgs e)
         {
-
+            var empleado = new Clases.Empleado();
+            empleado.ListarEmpleadosDataGridView(dgv_empleados);
         }
+
+        
     }
 }
