@@ -26,20 +26,24 @@ namespace crud.Vistas.Empleados
 
         private void btn_registrar_Click(object sender, EventArgs e)
         {
-           
-            //Instanciar la clase SQLCONNECTION
-            SqlConnection cn = new SqlConnection(
-            ConfigurationManager.ConnectionStrings["cs_proyecto"].ConnectionString
-            );
-            try {
-                cn.Open();
-                MessageBox.Show("Conexion exitosa");
-                cn.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+             /*this.Apellidos = _apellidos;
+            this.Nombre = _nombre;
+            this.Dni = _dni;
+            this.Genero = _genero;
+            this.EstadoCivil = _estado_civil;
+            this.Direccion = _direccion;
+            this.DistritoId = _distrito_id;*/
+            var empleado = new Clases.Empleado(
+                "FORERO",
+                "AURA",
+                "DNI",
+                "FEMENINO",
+                "CASADO",
+                "DIRECCION",
+                "1"
+                );
+            int ultimo_id = empleado.Registrar();
+            MessageBox.Show(ultimo_id.ToString());
            
         }
 

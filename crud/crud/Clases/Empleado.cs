@@ -49,7 +49,42 @@ namespace crud.Clases
 
         public int Registrar()
         {
-            throw new NotImplementedException();
+            int ultimo_id = 0;
+            try
+            {
+                using (var cmd = new SqlCommand("SP_REGISTRAR_EMPLEADO", cn))
+                {
+                    cmd.Parameters.AddWithValue("@APELLIDOS", this.Apellidos);
+                    cmd.Parameters.AddWithValue("@NOMBRE", this.Nombre);
+                    cmd.Parameters.AddWithValue("@DNI", this.Dni);
+                    cmd.Parameters.AddWithValue("@GENERO", this.Genero);
+                    cmd.Parameters.AddWithValue("@ESTADO_CIVIL", this.EstadoCivil);
+                    cmd.Parameters.AddWithValue("@DIRECCION", this.Direccion);
+                    cmd.Parameters.AddWithValue("@DISTRITO_ID", this.DistritoId);
+                    cmd.Parameters.AddWithValue("@ULTIMO_ID", SqlDbType.Int).Direction=ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                    ultimo_id = Convert.ToInt32(cmd.Parameters["@ULTIMO_ID"].Value.ToString());
+                    cn.Close();
+
+                }
+            }
+            catch(SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return ultimo_id;
+            }
+            finally
+            {
+                if ((cn.State == ConnectionState.Open)) 
+                {
+                    cn.Close();
+                }
+                
+            }
+
+            return ultimo_id;
         }
 
         public bool Actualizar()

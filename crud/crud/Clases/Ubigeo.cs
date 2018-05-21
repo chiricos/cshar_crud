@@ -22,9 +22,9 @@ namespace crud.Clases
             try
             {
                 //creando una instancia de la clase sqldataadapter
-                using (var adaptador = new SqlDataAdapter("SELECT * FROM DEPARTAMENTOS",cn))
+                using (var adaptador = new SqlDataAdapter("SP_LISTAR_DEPARTAMENTOS", cn))
                 {
-                    adaptador.SelectCommand.CommandType = CommandType.Text;
+                    adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
                     adaptador.Fill(tabla);
                 }
             }
@@ -43,10 +43,10 @@ namespace crud.Clases
             try
             {
                 //creando una instancia de la clase sqldataadapter
-                using (var adaptador = new SqlDataAdapter("SELECT * FROM PROVINCIAS WHERE DEPARTAMENTO_ID = @DEPARTAMENTO_ID ", cn))
+                using (var adaptador = new SqlDataAdapter("SP_LISTAR_PROVINCIAS", cn))
                 {
                     adaptador.SelectCommand.Parameters.AddWithValue("@DEPARTAMENTO_ID",departamentoId);
-                    adaptador.SelectCommand.CommandType = CommandType.Text;
+                    adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
                     adaptador.Fill(tabla);
                 }
             }
@@ -65,10 +65,10 @@ namespace crud.Clases
             try
             {
                 //creando una instancia de la clase sqldataadapter
-                using (var adaptador = new SqlDataAdapter("SELECT * FROM DISTRITOS WHERE PROVINCIA_ID = @PROVINCIA_ID ", cn))
+                using (var adaptador = new SqlDataAdapter("SP_LISTAR_DISTRITOS", cn))
                 {
                     adaptador.SelectCommand.Parameters.AddWithValue("@PROVINCIA_ID", provinciaId);
-                    adaptador.SelectCommand.CommandType = CommandType.Text;
+                    adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
                     adaptador.Fill(tabla);
                 }
             }

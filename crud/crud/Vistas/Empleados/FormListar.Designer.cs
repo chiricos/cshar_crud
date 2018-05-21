@@ -159,7 +159,6 @@
         private System.Windows.Forms.LinkLabel ll_nuevo_empleado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_buscar;
-        private System.Windows.Forms.DataGridView dgv_empleados;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -167,5 +166,6 @@
         private System.Windows.Forms.DataGridViewLinkColumn Column5;
         private System.Windows.Forms.DataGridViewLinkColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        internal System.Windows.Forms.DataGridView dgv_empleados;
     }
 }
