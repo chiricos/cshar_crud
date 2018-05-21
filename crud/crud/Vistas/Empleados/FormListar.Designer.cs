@@ -118,14 +118,14 @@
             this.Column5.HeaderText = "Editar";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
-            this.Column5.Width = 50;
+            this.Column5.Width = 80;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Eliminar";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            this.Column6.Width = 50;
+            this.Column6.Width = 80;
             // 
             // FormListar
             // 

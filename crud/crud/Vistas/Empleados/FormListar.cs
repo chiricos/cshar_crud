@@ -16,5 +16,10 @@ namespace crud.Vistas.Empleados
         {
             InitializeComponent();
         }
+
+        private void txt_nombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

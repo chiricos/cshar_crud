@@ -1,1 +1,11 @@
 E:\proyectos\drawde\visual\crud\crud\crud\bin\Debug\crud.exe.config
+E:\proyectos\drawde\visual\crud\crud\crud\bin\Debug\crud.exe
+E:\proyectos\drawde\visual\crud\crud\crud\bin\Debug\crud.pdb
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.csprojResolveAssemblyReference.cache
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.Properties.Resources.resources
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.Vistas.Empleados.FormActualizar.resources
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.Vistas.Empleados.FormListar.resources
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.Vistas.Empleados.FormRegistrar.resources
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.csproj.GenerateResource.Cache
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.exe
+E:\proyectos\drawde\visual\crud\crud\crud\obj\Debug\crud.pdb
