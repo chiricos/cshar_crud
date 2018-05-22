@@ -129,6 +129,7 @@ namespace crud.Clases
             var numero_filas = tabla.Rows.Count;
             if (numero_filas > 0)
             {
+                dgv.Rows.Clear();
                 for (int i = 0; i < numero_filas; i++)
                 {
                     string nombre_completo = tabla.Rows[i][2].ToString() + " " + tabla.Rows[i][1].ToString();

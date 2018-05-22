@@ -26,24 +26,64 @@ namespace crud.Vistas.Empleados
 
         private void btn_registrar_Click(object sender, EventArgs e)
         {
-             /*this.Apellidos = _apellidos;
-            this.Nombre = _nombre;
-            this.Dni = _dni;
-            this.Genero = _genero;
-            this.EstadoCivil = _estado_civil;
-            this.Direccion = _direccion;
-            this.DistritoId = _distrito_id;*/
-            var empleado = new Clases.Empleado(
-                "FORERO",
-                "AURA",
-                "DNI",
-                "FEMENINO",
-                "CASADO",
-                "DIRECCION",
-                "1"
-                );
-            int ultimo_id = empleado.Registrar();
-            MessageBox.Show(ultimo_id.ToString());
+            
+            if (txt_apellidos.Text.Trim().Equals(""))
+            {
+                txt_apellidos.Focus();
+                MessageBox.Show("Completar Apellidos","Mensaje",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            else if (txt_nombre.Text.Trim().Equals(""))
+            {
+                txt_nombre.Focus();
+                MessageBox.Show("Completar Nombre", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_dni.Text.Trim().Length != 8)
+            {
+                txt_dni.Focus();
+                MessageBox.Show("Completar Dni de 8 digitos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_direccion.Text.Trim().Equals(""))
+            {
+                txt_direccion.Focus();
+                MessageBox.Show("Completar Dirección", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (dgv_telefonos.Rows.Count == 0)
+            {
+                dgv_telefonos.Focus();
+                MessageBox.Show("Ingresar al menos un teléfono", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                
+               var empleado = new Clases.Empleado(
+               txt_apellidos.Text.Trim().ToUpper(),
+               txt_nombre.Text.Trim().ToUpper(),
+               txt_dni.Text.Trim(),
+               cbo_genero.Text,
+               cbo_estado_civil.Text,
+               txt_direccion.Text.Trim(),
+               cbo_distrito.SelectedValue.ToString()
+               );
+                int ultimo_id = empleado.Registrar();
+                int numero_filas = dgv_telefonos.Rows.Count;
+                for (int i = 0; i < numero_filas; i++)
+                {
+                    string operador = dgv_telefonos.Rows[i].Cells[0].Value.ToString();
+                    string numero = dgv_telefonos.Rows[i].Cells[1].Value.ToString();
+                    string empleado_id = ultimo_id.ToString();
+                    var telefono = new Clases.Telefono(operador,numero,empleado_id);
+                    var resultado = telefono.Registrar();
+                    if (!resultado)
+                    {
+                        MessageBox.Show("Error al registar teléfono", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                MessageBox.Show("Empleado registrado correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                empleado.ListarEmpleadosDataGridView(Vistas.Empleados.FormListar.MyForm.dgv_empleados);
+            }
+
+
+           
            
         }
 
@@ -84,32 +124,44 @@ namespace crud.Vistas.Empleados
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            
-            int numero_filas = dgv_telefonos.Rows.Count;
-            if (dgv_telefonos.Rows.Count ==0)
+            if (txt_numero.Text.Trim().Equals(""))
             {
-                AgregarTelefonos();
+                txt_numero.Focus();
+                MessageBox.Show("Completar Número", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txt_numero.Text.Trim().Length != 10)
+            {
+                txt_numero.Focus();
+                MessageBox.Show("Completar Número de 10 digitos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                string numero = txt_numero.Text;
-                bool existe = false;
-
-                for (int i=0; i < numero_filas; i++)
+                int numero_filas = dgv_telefonos.Rows.Count;
+                if (dgv_telefonos.Rows.Count == 0)
                 {
-                    if (numero.Equals(dgv_telefonos.Rows[i].Cells[1].Value.ToString()))
-                    {
-                        existe = true;
-                        break;
-                    } 
-                }
-                if (existe)
-                {
-                    MessageBox.Show("Este telefono ya fue agregado ");
+                    AgregarTelefonos();
                 }
                 else
                 {
-                    AgregarTelefonos();
+                    string numero = txt_numero.Text;
+                    bool existe = false;
+
+                    for (int i = 0; i < numero_filas; i++)
+                    {
+                        if (numero.Equals(dgv_telefonos.Rows[i].Cells[1].Value.ToString()))
+                        {
+                            existe = true;
+                            break;
+                        }
+                    }
+                    if (existe)
+                    {
+                        MessageBox.Show("Este telefono ya fue agregado ");
+                    }
+                    else
+                    {
+                        AgregarTelefonos();
+                    }
                 }
             }
             

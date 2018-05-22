@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,43 @@ namespace crud.Clases
         public Telefono(int _telefono_id)
         {
             this.TelefonoId = _telefono_id;
+        }
+
+        public bool Registrar()
+        {
+            try
+            {
+                using (var cmd = new SqlCommand("SP_REGISTAR_TELEFONOS", cn))
+                {
+                    cmd.Parameters.AddWithValue("@OPERADOR", this.Operador);
+                    cmd.Parameters.AddWithValue("@NUMERO", this.Numero);
+                    cmd.Parameters.AddWithValue("@EMPLEADO_ID", this.Empleado_id);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    int r = cmd.ExecuteNonQuery();
+                    cn.Close();
+
+                    if (r == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                if ((cn.State == ConnectionState.Open))
+                {
+                    cn.Close();
+                }
+
+            }
+
+            return false;
         }
       
     }

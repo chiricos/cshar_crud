@@ -48,6 +48,12 @@ namespace crud.Vistas.Empleados
             empleado.ListarEmpleadosDataGridView(dgv_empleados);
         }
 
+        private void ll_nuevo_empleado_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormRegistrar registrar = new FormRegistrar();
+            registrar.Show();
+        }
+
         
     }
 }

@@ -51,6 +51,7 @@
             this.ll_nuevo_empleado.TabIndex = 0;
             this.ll_nuevo_empleado.TabStop = true;
             this.ll_nuevo_empleado.Text = "Nuevo Empleado";
+            this.ll_nuevo_empleado.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_nuevo_empleado_LinkClicked);
             // 
             // label1
             // 
