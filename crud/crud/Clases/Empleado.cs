@@ -118,14 +118,48 @@ namespace crud.Clases
             return tabla;
         }
 
+        public DataTable BuscarEmpleadoPorNombre(string nombre)
+        {
+            //instanciando a la clase datatable
+            var tabla = new DataTable();
+            try
+            {
+                //creando una instancia de la clase sqldataadapter
+                using (var adaptador = new SqlDataAdapter("PS_BUSCAR_EMPLEADO_LIKE", cn))
+                {
+                    adaptador.SelectCommand.Parameters.AddWithValue("@NOMBRE", nombre.Trim().ToUpper());
+                    adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adaptador.Fill(tabla);
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return tabla;
+            }
+            return tabla;
+        }
+
         public DataTable BuscarPorCodigo(int id)
         {
             throw new NotImplementedException();
         }
 
+        public void BuscarEmpleadoLike(DataGridView dgv,string nombre)
+        {
+            
+            var tabla = this.BuscarEmpleadoPorNombre(nombre);
+            this.ListarGrid(dgv, tabla);
+        }
+
         public void ListarEmpleadosDataGridView(DataGridView dgv)
         {
             var tabla = this.Listar();
+            this.ListarGrid(dgv, tabla);
+        }
+
+        private void ListarGrid(DataGridView dgv, DataTable tabla)
+        {
             var numero_filas = tabla.Rows.Count;
             if (numero_filas > 0)
             {

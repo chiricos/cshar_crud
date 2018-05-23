@@ -39,7 +39,14 @@ namespace crud.Vistas.Empleados
 
         private void txt_nombre_TextChanged(object sender, EventArgs e)
         {
-
+            var empleado = new Clases.Empleado();
+            if (txt_buscar.Text.Trim().Length >0)
+            {
+                empleado.BuscarEmpleadoLike(dgv_empleados, txt_buscar.Text.Trim());
+            }else
+            {
+                empleado.ListarEmpleadosDataGridView(dgv_empleados);
+            }
         }
 
         private void FormListar_Load(object sender, EventArgs e)
