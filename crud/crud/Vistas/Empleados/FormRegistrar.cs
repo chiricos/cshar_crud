@@ -171,7 +171,7 @@ namespace crud.Vistas.Empleados
         {
             string operador = cbo_operador.Text;
             string numero = txt_numero.Text;
-            dgv_telefonos.Rows.Add(operador, numero, "Eliminar");
+            dgv_telefonos.Rows.Add(operador, numero, "Eliminar",0);
         }
 
         private void cbo_provincia_SelectedValueChanged(object sender, EventArgs e)

@@ -88,6 +88,7 @@
             this.dgv_empleados.ReadOnly = true;
             this.dgv_empleados.Size = new System.Drawing.Size(542, 237);
             this.dgv_empleados.TabIndex = 3;
+            this.dgv_empleados.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_empleados_CellMouseDoubleClick);
             // 
             // Column1
             // 

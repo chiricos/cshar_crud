@@ -15,10 +15,33 @@ namespace crud.Vistas.Empleados
         public FormActualizar()
         {
             InitializeComponent();
+            if (_myForm == null)
+            {
+                _myForm = this;
+            }
+        }
+
+        private static FormActualizar _myForm;
+
+        public static FormActualizar MyForm
+        {
+            get
+            {
+                if (_myForm == null)
+                {
+                    _myForm = new FormActualizar();
+                }
+                return FormActualizar._myForm;
+
+            }
+            set { FormActualizar._myForm = value; }
         }
 
         private void FormActualizar_Load(object sender, EventArgs e)
         {
+            dgv_telefonos.Rows.Clear();
+            dgv_telefonos.Refresh();
+
             cbo_genero.SelectedIndex = 0;
             cbo_estado_civil.SelectedIndex = 0;
             cbo_operador.SelectedIndex = 0;
@@ -85,7 +108,12 @@ namespace crud.Vistas.Empleados
         {
             string operador = cbo_operador.Text;
             string numero = txt_numero.Text;
-            dgv_telefonos.Rows.Add(operador, numero, "Eliminar");
+            dgv_telefonos.Rows.Add(operador, numero, "Eliminar",0);
+        }
+
+        private void FormActualizar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _myForm = null;
         }
 
     }

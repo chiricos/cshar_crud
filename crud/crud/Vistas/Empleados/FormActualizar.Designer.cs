@@ -32,9 +32,6 @@
             this.btn_registrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_telefonos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.cbo_operador = new System.Windows.Forms.ComboBox();
@@ -59,6 +56,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telefonos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -104,26 +105,12 @@
             this.dgv_telefonos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.Column4});
             this.dgv_telefonos.Location = new System.Drawing.Point(8, 71);
             this.dgv_telefonos.Name = "dgv_telefonos";
             this.dgv_telefonos.Size = new System.Drawing.Size(464, 150);
             this.dgv_telefonos.TabIndex = 19;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Operador";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "N° Teléfono";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Eliminar";
-            this.Column3.Name = "Column3";
             // 
             // btn_agregar
             // 
@@ -359,6 +346,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Apellidos (*)";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Operador";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "N° Teléfono";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Eliminar";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "EmpleadoId";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
+            // 
             // FormActualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,6 +378,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormActualizar";
             this.Text = "FormActualizar";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormActualizar_FormClosed);
             this.Load += new System.EventHandler(this.FormActualizar_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -385,25 +394,10 @@
         private System.Windows.Forms.Button btn_cancelar;
         private System.Windows.Forms.Button btn_registrar;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dgv_telefonos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewLinkColumn Column3;
         private System.Windows.Forms.Button btn_agregar;
-        private System.Windows.Forms.TextBox txt_numero;
-        private System.Windows.Forms.ComboBox cbo_operador;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cbo_distrito;
-        private System.Windows.Forms.ComboBox cbo_provincia;
-        private System.Windows.Forms.ComboBox cbo_departamento;
-        private System.Windows.Forms.ComboBox cbo_estado_civil;
-        private System.Windows.Forms.ComboBox cbo_genero;
-        private System.Windows.Forms.TextBox txt_direccion;
-        private System.Windows.Forms.TextBox txt_dni;
-        private System.Windows.Forms.TextBox txt_nombre;
-        private System.Windows.Forms.TextBox txt_apellidos;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -413,6 +407,22 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.ComboBox cbo_genero;
+        internal System.Windows.Forms.DataGridView dgv_telefonos;
+        internal System.Windows.Forms.TextBox txt_numero;
+        internal System.Windows.Forms.ComboBox cbo_operador;
+        internal System.Windows.Forms.ComboBox cbo_distrito;
+        internal System.Windows.Forms.ComboBox cbo_provincia;
+        internal System.Windows.Forms.ComboBox cbo_departamento;
+        internal System.Windows.Forms.ComboBox cbo_estado_civil;
+        internal System.Windows.Forms.TextBox txt_direccion;
+        internal System.Windows.Forms.TextBox txt_dni;
+        internal System.Windows.Forms.TextBox txt_nombre;
+        internal System.Windows.Forms.TextBox txt_apellidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewLinkColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 
     }
 }

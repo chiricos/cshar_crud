@@ -31,6 +31,7 @@ namespace crud.Clases
             this.Empleado_id = _empleado_id;
         }
 
+
         public Telefono(int _telefono_id)
         {
             this.TelefonoId = _telefono_id;
@@ -71,6 +72,28 @@ namespace crud.Clases
             }
 
             return false;
+        }
+
+        public DataTable BuscarPorCodigo(int id)
+        {
+            //instanciando a la clase datatable
+            var tabla = new DataTable();
+            try
+            {
+                //creando una instancia de la clase sqldataadapter
+                using (var adaptador = new SqlDataAdapter("SP_BUSCAR_TELEFONOS_POR_EMPLEADO_ID", cn))
+                {
+                    adaptador.SelectCommand.Parameters.AddWithValue("@ID", id);
+                    adaptador.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adaptador.Fill(tabla);
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return tabla;
+            }
+            return tabla;
         }
       
     }
