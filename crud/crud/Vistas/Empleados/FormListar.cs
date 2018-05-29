@@ -12,6 +12,9 @@ namespace crud.Vistas.Empleados
 {
     public partial class FormListar : Form
     {
+
+        
+
         public FormListar()
         {
             InitializeComponent();
@@ -101,6 +104,7 @@ namespace crud.Vistas.Empleados
                                     );
                             }
                         }
+                        FormActualizar.MyForm.empleadoId_TEMP = empleado_id;
                     }
                 }
                 if (dgv_empleados.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Equals("Eliminar"))

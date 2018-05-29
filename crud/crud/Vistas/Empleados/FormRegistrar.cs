@@ -65,21 +65,29 @@ namespace crud.Vistas.Empleados
                cbo_distrito.SelectedValue.ToString()
                );
                 int ultimo_id = empleado.Registrar();
-                int numero_filas = dgv_telefonos.Rows.Count;
-                for (int i = 0; i < numero_filas; i++)
+                if (ultimo_id>0)
                 {
-                    string operador = dgv_telefonos.Rows[i].Cells[0].Value.ToString();
-                    string numero = dgv_telefonos.Rows[i].Cells[1].Value.ToString();
-                    string empleado_id = ultimo_id.ToString();
-                    var telefono = new Clases.Telefono(operador,numero,empleado_id);
-                    var resultado = telefono.Registrar();
-                    if (!resultado)
+                    int numero_filas = dgv_telefonos.Rows.Count;
+                    for (int i = 0; i < numero_filas; i++)
                     {
-                        MessageBox.Show("Error al registar teléfono", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string operador = dgv_telefonos.Rows[i].Cells[0].Value.ToString();
+                        string numero = dgv_telefonos.Rows[i].Cells[1].Value.ToString();
+                        string empleado_id = ultimo_id.ToString();
+                        var telefono = new Clases.Telefono(operador, numero, empleado_id);
+                        var resultado = telefono.Registrar();
+                        if (!resultado)
+                        {
+                            MessageBox.Show("Error al registar teléfono", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                    MessageBox.Show("Empleado registrado correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    empleado.ListarEmpleadosDataGridView(Vistas.Empleados.FormListar.MyForm.dgv_empleados);
                 }
-                MessageBox.Show("Empleado registrado correctamente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                empleado.ListarEmpleadosDataGridView(Vistas.Empleados.FormListar.MyForm.dgv_empleados);
+                else
+                {
+                    MessageBox.Show("Error al registar ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               
             }
 
 

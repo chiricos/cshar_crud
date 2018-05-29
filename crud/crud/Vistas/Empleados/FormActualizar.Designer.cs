@@ -32,6 +32,10 @@
             this.btn_registrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_telefonos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.cbo_operador = new System.Windows.Forms.ComboBox();
@@ -56,10 +60,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telefonos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -80,8 +80,9 @@
             this.btn_registrar.Name = "btn_registrar";
             this.btn_registrar.Size = new System.Drawing.Size(75, 23);
             this.btn_registrar.TabIndex = 7;
-            this.btn_registrar.Text = "Registrar";
+            this.btn_registrar.Text = "Actualizar";
             this.btn_registrar.UseVisualStyleBackColor = true;
+            this.btn_registrar.Click += new System.EventHandler(this.btn_registrar_Click);
             // 
             // groupBox2
             // 
@@ -111,6 +112,27 @@
             this.dgv_telefonos.Name = "dgv_telefonos";
             this.dgv_telefonos.Size = new System.Drawing.Size(464, 150);
             this.dgv_telefonos.TabIndex = 19;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Operador";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "N° Teléfono";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Eliminar";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "EmpleadoId";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
             // 
             // btn_agregar
             // 
@@ -204,6 +226,9 @@
             this.cbo_provincia.Name = "cbo_provincia";
             this.cbo_provincia.Size = new System.Drawing.Size(161, 21);
             this.cbo_provincia.TabIndex = 14;
+            this.cbo_provincia.SelectedIndexChanged += new System.EventHandler(this.cbo_provincia_SelectedIndexChanged);
+            this.cbo_provincia.SelectedValueChanged += new System.EventHandler(this.cbo_provincia_SelectedValueChanged);
+            this.cbo_provincia.RightToLeftChanged += new System.EventHandler(this.cbo_provincia_RightToLeftChanged);
             // 
             // cbo_departamento
             // 
@@ -345,27 +370,6 @@
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Apellidos (*)";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Operador";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "N° Teléfono";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Eliminar";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "EmpleadoId";
-            this.Column4.Name = "Column4";
-            this.Column4.Visible = false;
             // 
             // FormActualizar
             // 

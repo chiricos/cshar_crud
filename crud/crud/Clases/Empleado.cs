@@ -42,8 +42,16 @@ namespace crud.Clases
             this.DistritoId = _distrito_id;
         }
 
-        public Empleado(int _empleado_id)
+        public Empleado(string _apellidos, string _nombre, string _dni,string _genero,
+                string _estado_civil,string _direccion, string _distrito_id,int _empleado_id)
         {
+            this.Apellidos = _apellidos;
+            this.Nombre = _nombre;
+            this.Dni = _dni;
+            this.Genero = _genero;
+            this.EstadoCivil = _estado_civil;
+            this.Direccion = _direccion;
+            this.DistritoId = _distrito_id;
             this.EmpleadoId = _empleado_id;
         }
 
@@ -89,7 +97,44 @@ namespace crud.Clases
 
         public bool Actualizar()
         {
-            throw new NotImplementedException();
+            int ultimo_id = 0;
+            try
+            {
+                using (var cmd = new SqlCommand("SP_ACTUALIZAR_EMPLEADO", cn))
+                {
+                    cmd.Parameters.AddWithValue("@APELLIDOS", this.Apellidos);
+                    cmd.Parameters.AddWithValue("@NOMBRE", this.Nombre);
+                    cmd.Parameters.AddWithValue("@DNI", this.Dni);
+                    cmd.Parameters.AddWithValue("@GENERO", this.Genero);
+                    cmd.Parameters.AddWithValue("@ESTADO_CIVIL", this.EstadoCivil);
+                    cmd.Parameters.AddWithValue("@DIRECCION", this.Direccion);
+                    cmd.Parameters.AddWithValue("@DISTRITO_ID", this.DistritoId);
+                    cmd.Parameters.AddWithValue("@EMPLEADO_ID", this.EmpleadoId);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    int r = cmd.ExecuteNonQuery();
+                    cn.Close();
+                    if (r==1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                if ((cn.State == ConnectionState.Open))
+                {
+                    cn.Close();
+                }
+
+            }
+
+            return false;
         }
 
         public bool Eliminar()
