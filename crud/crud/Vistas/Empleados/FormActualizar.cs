@@ -113,7 +113,9 @@ namespace crud.Vistas.Empleados
         {
             string operador = cbo_operador.Text;
             string numero = txt_numero.Text;
-            dgv_telefonos.Rows.Add(operador, numero, "Eliminar",0);
+            dgv_telefonos.Rows.Add(operador, numero, "Eliminar",0,0);
+            txt_numero.Text = string.Empty;
+            txt_numero.Focus();
         }
 
         private void FormActualizar_FormClosed(object sender, FormClosedEventArgs e)
@@ -215,6 +217,56 @@ namespace crud.Vistas.Empleados
                 cbo_distrito.DataSource = tabla;
                 cbo_distrito.DisplayMember = "NOMBRE_DISTRITO";
                 cbo_distrito.ValueMember = "DISTRITO_ID";
+            }
+        }
+
+        private void dgv_telefonos_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                if (dgv_telefonos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Equals("Eliminar"))
+                {
+                    DialogResult res = MessageBox.Show("Deseas eliminar este item ? ", "Mensaje",
+                   MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                    if (res == DialogResult.Yes)
+                    {
+                        int telefono_id = int.Parse(dgv_telefonos.Rows[e.RowIndex].Cells[4].Value.ToString());
+                        if (telefono_id >0)
+                        {
+                            var telefono = new Clases.Telefono(telefono_id);
+                            if (telefono.Eliminar())
+                            {
+                                dgv_telefonos.Rows.RemoveAt(e.RowIndex);
+                            }
+                        }
+                        else
+                        {
+                            dgv_telefonos.Rows.RemoveAt(e.RowIndex);
+                        }
+                    }
+                }
+               
+            }
+        }
+
+        private void txt_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
 

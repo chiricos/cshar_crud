@@ -24,17 +24,16 @@ namespace crud.Clases
         {
         }
 
+        public Telefono(int telefonoId)
+        {
+            this.TelefonoId = telefonoId;
+        }
+
         public Telefono(string _operador,string _numero,string _empleado_id)
         {
             this.Operador = _operador;
             this.Numero = _numero;
             this.Empleado_id = _empleado_id;
-        }
-
-
-        public Telefono(int _telefono_id)
-        {
-            this.TelefonoId = _telefono_id;
         }
 
         public bool Registrar()
@@ -94,6 +93,41 @@ namespace crud.Clases
                 return tabla;
             }
             return tabla;
+        }
+
+        public bool Eliminar()
+        {
+            int ultimo_id = 0;
+            try
+            {
+                using (var cmd = new SqlCommand("SP_ELIMINAR_TELEFONO", cn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", this.TelefonoId);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    int r = cmd.ExecuteNonQuery();
+                    cn.Close();
+                    if (r == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                if ((cn.State == ConnectionState.Open))
+                {
+                    cn.Close();
+                }
+
+            }
+
+            return false;
         }
       
     }

@@ -32,10 +32,6 @@
             this.btn_registrar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgv_telefonos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.cbo_operador = new System.Windows.Forms.ComboBox();
@@ -60,6 +56,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telefonos)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -107,32 +108,13 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
+            this.Column4,
+            this.Column5});
             this.dgv_telefonos.Location = new System.Drawing.Point(8, 71);
             this.dgv_telefonos.Name = "dgv_telefonos";
             this.dgv_telefonos.Size = new System.Drawing.Size(464, 150);
             this.dgv_telefonos.TabIndex = 19;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Operador";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "N° Teléfono";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Eliminar";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "EmpleadoId";
-            this.Column4.Name = "Column4";
-            this.Column4.Visible = false;
+            this.dgv_telefonos.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_telefonos_CellMouseDoubleClick);
             // 
             // btn_agregar
             // 
@@ -275,6 +257,7 @@
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(151, 20);
             this.txt_dni.TabIndex = 10;
+            this.txt_dni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_dni_KeyPress);
             // 
             // txt_nombre
             // 
@@ -371,6 +354,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Apellidos (*)";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Operador";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "N° Teléfono";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Eliminar";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "EmpleadoId";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "TelefonoId";
+            this.Column5.Name = "Column5";
+            // 
             // FormActualizar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,6 +435,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewLinkColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
 
     }
 }

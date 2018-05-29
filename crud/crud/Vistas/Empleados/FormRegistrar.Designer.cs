@@ -52,6 +52,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.cbo_operador = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btn_registrar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_telefonos)).BeginInit();
@@ -153,6 +153,7 @@
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(151, 20);
             this.txt_dni.TabIndex = 10;
+            this.txt_dni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_dni_KeyPress);
             // 
             // txt_nombre
             // 
@@ -293,6 +294,12 @@
             this.Column3.HeaderText = "Eliminar";
             this.Column3.Name = "Column3";
             // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "EmpleadoId";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
+            // 
             // btn_agregar
             // 
             this.btn_agregar.Location = new System.Drawing.Point(368, 43);
@@ -361,12 +368,6 @@
             this.btn_cancelar.TabIndex = 4;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "EmpleadoId";
-            this.Column4.Name = "Column4";
-            this.Column4.Visible = false;
             // 
             // FormRegistrar
             // 

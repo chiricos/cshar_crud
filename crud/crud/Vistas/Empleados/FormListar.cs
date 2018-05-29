@@ -97,10 +97,11 @@ namespace crud.Vistas.Empleados
                            
                             for (int i = 0; i < numero_filas; i++)
                             {
+                                int telefono_id = int.Parse(tabla_telefonos.Rows[i][0].ToString());
                                 string operador = tabla_telefonos.Rows[i][1].ToString();
                                 string numero = tabla_telefonos.Rows[i][2].ToString();
                                 FormActualizar.MyForm.dgv_telefonos.Rows.Add(
-                                    operador, numero, "Eliminar",empleado_id
+                                    operador, numero, "Eliminar",empleado_id,telefono_id
                                     );
                             }
                         }
@@ -109,7 +110,23 @@ namespace crud.Vistas.Empleados
                 }
                 if (dgv_empleados.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Equals("Eliminar"))
                 {
-                    MessageBox.Show("Eliminar");
+                    DialogResult res = MessageBox.Show("Deseas eliminar este empleado ? ", "Mensaje",
+                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
+                    if (res == DialogResult.Yes)
+                    {
+                        int empleado_id = int.Parse(dgv_empleados.Rows[e.RowIndex].Cells[6].Value.ToString());
+                        var empleado = new Clases.Empleado(empleado_id);
+                        if (empleado.Eliminar())
+                        {
+                            dgv_empleados.Rows.RemoveAt(e.RowIndex);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al eliminar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                       
+                    }
                 }
                 
             }

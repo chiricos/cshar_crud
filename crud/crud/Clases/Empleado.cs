@@ -29,6 +29,11 @@ namespace crud.Clases
         { 
         }
 
+        public Empleado(int empleadoId)
+        {
+            this.EmpleadoId = empleadoId;
+        }
+
         public Empleado(string _apellidos, string _nombre, string _dni,string _genero,
                 string _estado_civil,string _direccion, string _distrito_id    
             )
@@ -139,7 +144,38 @@ namespace crud.Clases
 
         public bool Eliminar()
         {
-            throw new NotImplementedException();
+            int ultimo_id = 0;
+            try
+            {
+                using (var cmd = new SqlCommand("SP_ELIMINAR_EMPLEADO", cn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", this.EmpleadoId);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cn.Open();
+                    int r = cmd.ExecuteNonQuery();
+                    cn.Close();
+                    if (r == 1)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message);
+                return false;
+            }
+            finally
+            {
+                if ((cn.State == ConnectionState.Open))
+                {
+                    cn.Close();
+                }
+
+            }
+
+            return false;
+
         }
 
         public DataTable Listar()

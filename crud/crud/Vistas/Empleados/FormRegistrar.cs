@@ -180,6 +180,8 @@ namespace crud.Vistas.Empleados
             string operador = cbo_operador.Text;
             string numero = txt_numero.Text;
             dgv_telefonos.Rows.Add(operador, numero, "Eliminar",0);
+            txt_numero.Text = string.Empty;
+            txt_numero.Focus();
         }
 
         private void cbo_provincia_SelectedValueChanged(object sender, EventArgs e)
@@ -193,6 +195,26 @@ namespace crud.Vistas.Empleados
                 cbo_distrito.DataSource = tabla;
                 cbo_distrito.DisplayMember = "NOMBRE_DISTRITO";
                 cbo_distrito.ValueMember = "DISTRITO_ID";
+            }
+        }
+
+        private void txt_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if(Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }
